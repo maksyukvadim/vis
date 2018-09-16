@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Timeline | Custom styling</title>
+
+  <script src="../../../dist/vis.js"></script>
+  <link href="../../../dist/vis-timeline-graph2d.min.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+<p>
+  The style of the Timeline can be fully customized via CSS:
+</p>
+<div id="visualization"></div>
+
+<script type="text/javascript">
+    var container = document.getElementById('visualization');
+
+    const options = {
+        width: '100%',
+        height: '230px',
+        // stack: false,
+        editable: true,
+        // editable:  {
+        //     add: false,
+        //     remove: false,
+        //     updateGroup: false,
+        //     updateTime: true,
+        //     overrideItems: true
+        // },
+        orientation: 'bottom',
+        showMajorLabels: true,
+        showCurrentTime: true,
+        // zoomMin: 6000,
+        // type: 'background',
+        format: {
+            minorLabels: {
+                minute: 'h:mma',
+                hour: 'ha'
+            }
+        }
+    }
+
+    const groups = [{
+        id: 1,
+        content: 'Group A',
+    },
+        {
+            id: 2,
+            content: 'Group B',
+        },
+        {
+            id: 3,
+            content: 'Group B',
+        }
+    ];
+    var items = new vis.DataSet([
+        {start: new Date(2010,7,23), content: '123123', group: 1,},
+        {group: 1, start: new Date(2010,7,23,23,0,0), content: '<div>Mail from boss</div><img src="../resources/img/mail-icon.png" style="width:32px; height:32px;">'},
+        {group: 3,start: new Date(2010,7,29), content: '<div>Phone call</div><img src="../resources/img/Hardware-Mobile-Phone-icon.png" style="width:32px; height:32px;">'},
+        {group: 3,start: new Date(2010,7,31), end: new Date(2010,8,3), content: 'Traject B'},
+        {group: 3,start: new Date(2010,8,4,12,0,0), content: '<div>Report</div><img src="../resources/img/attachment-icon.png" style="width:32px; height:32px;">'}
+    ]);
+
+    var timeline = new vis.Timeline(container, items,groups,  options);
+</script>
+</body>
+</html>
