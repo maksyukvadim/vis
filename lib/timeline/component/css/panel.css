@@ -15,6 +15,10 @@
   border: 1px #bfbfbf;
 }
 
+.vis-left {
+  display: none;
+}
+
 .vis-panel.vis-center,
 .vis-panel.vis-left,
 .vis-panel.vis-right {
